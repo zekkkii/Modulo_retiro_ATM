@@ -1,0 +1,7 @@
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\bin\Debug\ATM pruebin.exe.config
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\bin\Debug\ATM pruebin.exe
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\bin\Debug\ATM pruebin.pdb
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\obj\Debug\ATM pruebin.csprojAssemblyReference.cache
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\obj\Debug\ATM pruebin.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\obj\Debug\ATM pruebin.exe
+C:\Users\Ezequiel Vasquez\source\repos\ATM pruebin\obj\Debug\ATM pruebin.pdb
