@@ -87,7 +87,7 @@ namespace ATM_pruebin
                 }
                 else
                 {
-                    Console.WriteLine("Con esta configuracion no puedes hacer el retiro del monto deseado...Cambia la configuracion a cualquiera diferente a papeletas de 200 y 100...\nRedireccionando a menu...");
+                    Console.WriteLine("Con esta configuracion no puedes hacer el retiro del monto deseado...Cambia la configuracion a cualquiera diferente a papeletas de 200 y 100...\nIntentalo otra vez!!...\nRedireccionando a menu...");
                     Console.ReadKey();
                     menu.startMenu();
                 }
