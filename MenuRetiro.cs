@@ -107,10 +107,15 @@ namespace ATM_pruebin
             int sumaCantidadRetirar = 0;
             List<int> papeletasUsadas = new List<int>();
 
-            while (sumaCantidadRetirar!= cantitdadRetirar)
-            {
-                var modoDispensacion = Singleton.Instancia.modoDispensacion;
-                for (int i = modoDispensacion.Count; i!=0; i--)
+            int cantidadPapeletaCien = 0;
+            int cantidadPapeletaDoscientos = 0;
+            int cantidadPapeletaQuinientos = 0;
+            int cantidadPapeletaMil = 0;
+
+
+            var modoDispensacion = Singleton.Instancia.modoDispensacion;
+                //con este ciclo 
+                for (int i = modoDispensacion.Count-1; i!=0; i--)
                 {
                     if (modoDispensacion[i] == cantitdadRetirar)
                     {
@@ -119,20 +124,65 @@ namespace ATM_pruebin
                         break;
                     }
 
-                    else if (modoDispensacion[i] < cantitdadRetirar)
+                    else if (sumaCantidadRetirar + modoDispensacion[i] <= cantitdadRetirar)
                     {
                         sumaCantidadRetirar += modoDispensacion[i];
-                        
-                    }
+                        papeletasUsadas.Add(modoDispensacion[i]);
 
+                        if (sumaCantidadRetirar + modoDispensacion[i] == cantitdadRetirar)
+                        {
+                            break;
+                        }
+
+                        i += 1;
+                    }              
                 }
+
+                foreach (int  papeleta in papeletasUsadas )
+                {
+                    switch (papeleta)
+                    {
+                        case 100:
+                        cantidadPapeletaCien++;
+                            break;
+                        case 200:
+                        cantidadPapeletaDoscientos++;
+                            break;
+                        case 500:
+                        cantidadPapeletaQuinientos++;
+                            break;
+                         case 1000:
+                        cantidadPapeletaMil++;
+                            break;
+                    }
+                }
+
+            if (cantidadPapeletaCien>0)
+            {
+                Console.WriteLine($" Papeletas de cien:{cantidadPapeletaCien}");
             }
-            
+
+            if (cantidadPapeletaDoscientos > 0)
+            {
+                Console.WriteLine($" Papeletas de doscientos:{cantidadPapeletaDoscientos}");
+            }
+
+            if (cantidadPapeletaQuinientos > 0)
+            {
+                Console.WriteLine($" Papeletas de quinientos:{cantidadPapeletaQuinientos}");
+            }
+
+            if (cantidadPapeletaMil > 0)
+            {
+                Console.WriteLine($" Papeletas de mil:{cantidadPapeletaMil}");
+            }
+
+            Console.WriteLine($"Presiona cualquier tecla para volver al menu principal...");
+            Console.ReadKey();
+            menu.startMenu();
+
+
         }
-
-
-
-
 
     }
 }
