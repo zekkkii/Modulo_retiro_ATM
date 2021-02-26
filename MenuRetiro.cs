@@ -83,7 +83,6 @@ namespace ATM_pruebin
 
                 if (ultimosTresDigitos % 200 == 0)
                 {
-                    //Complete here
                     iniciaTransaccion(cantidadRetirar);
                 }
                 else
@@ -96,7 +95,6 @@ namespace ATM_pruebin
             }
             else 
             {
-                //Complete here
                 iniciaTransaccion(cantidadRetirar);
             }           
         }
@@ -115,24 +113,20 @@ namespace ATM_pruebin
 
             var modoDispensacion = Singleton.Instancia.modoDispensacion;
                 //con este ciclo 
-                for (int i = modoDispensacion.Count-1; i!=0; i--)
+                for (int i = modoDispensacion.Count-1; sumaCantidadRetirar != cantitdadRetirar; i--)
                 {
+                 
                     if (modoDispensacion[i] == cantitdadRetirar)
-                    {
-                        sumaCantidadRetirar = modoDispensacion[i];
-                        papeletasUsadas.Add(modoDispensacion[i]);
-                        break;
-                    }
+                     {
+                            sumaCantidadRetirar = modoDispensacion[i];
+                            papeletasUsadas.Add(modoDispensacion[i]);
+                            break;
+                     }
 
                     else if (sumaCantidadRetirar + modoDispensacion[i] <= cantitdadRetirar)
                     {
                         sumaCantidadRetirar += modoDispensacion[i];
                         papeletasUsadas.Add(modoDispensacion[i]);
-
-                        if (sumaCantidadRetirar + modoDispensacion[i] == cantitdadRetirar)
-                        {
-                            break;
-                        }
 
                         i += 1;
                     }              
@@ -157,7 +151,7 @@ namespace ATM_pruebin
                     }
                 }
 
-            if (cantidadPapeletaCien>0)
+            if (cantidadPapeletaCien > 0)
             {
                 Console.WriteLine($" Papeletas de cien:{cantidadPapeletaCien}");
             }
@@ -177,7 +171,7 @@ namespace ATM_pruebin
                 Console.WriteLine($" Papeletas de mil:{cantidadPapeletaMil}");
             }
 
-            Console.WriteLine($"Presiona cualquier tecla para volver al menu principal...");
+            Console.WriteLine($"Trasaccion completada...\nPresiona cualquier tecla para volver al menu principal...");
             Console.ReadKey();
             menu.startMenu();
 
