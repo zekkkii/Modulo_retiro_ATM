@@ -10,7 +10,7 @@ namespace ATM_pruebin
     {
         public MenuRetiro()
         { }
-
+        public Menu menu = new Menu();
         public void startMenu()
         {
             try
@@ -24,7 +24,7 @@ namespace ATM_pruebin
                 {
                     if (cantidadDinero % 100 == 0)
                     {
-
+                        filtrarConfiguracionRetiro(cantidadDinero);
                     }
                     else
                     {
@@ -70,10 +70,69 @@ namespace ATM_pruebin
             if (cantidad >= 100 && cantidad <= Singleton.Instancia.cantidadAhorros[0])
             {
                 return true;
-         
             }
             return false;
 
         }
+
+       private void  filtrarConfiguracionRetiro(int cantidadRetirar)
+        {
+             if (Singleton.Instancia.modoDispensacion[0] == 200 && Singleton.Instancia.modoDispensacion[1] == 1000)
+             {
+                int ultimosTresDigitos = cantidadRetirar % 1000;
+
+                if (ultimosTresDigitos % 200 == 0)
+                {
+                    //Complete here
+                    iniciaTransaccion(cantidadRetirar);
+                }
+                else
+                {
+                    Console.WriteLine("Con esta configuracion no puedes hacer el retiro del monto deseado...Cambia la configuracion a cualquiera diferente a papeletas de 200 y 100...\nRedireccionando a menu...");
+                    Console.ReadKey();
+                    menu.startMenu();
+                }
+
+            }
+            else 
+            {
+                //Complete here
+                iniciaTransaccion(cantidadRetirar);
+            }           
+        }
+
+
+        private void iniciaTransaccion(int cantitdadRetirar)
+        {
+            int sumaCantidadRetirar = 0;
+            List<int> papeletasUsadas = new List<int>();
+
+            while (sumaCantidadRetirar!= cantitdadRetirar)
+            {
+                var modoDispensacion = Singleton.Instancia.modoDispensacion;
+                for (int i = modoDispensacion.Count; i!=0; i--)
+                {
+                    if (modoDispensacion[i] == cantitdadRetirar)
+                    {
+                        sumaCantidadRetirar = modoDispensacion[i];
+                        papeletasUsadas.Add(modoDispensacion[i]);
+                        break;
+                    }
+
+                    else if (modoDispensacion[i] < cantitdadRetirar)
+                    {
+                        sumaCantidadRetirar += modoDispensacion[i];
+                        
+                    }
+
+                }
+            }
+            
+        }
+
+
+
+
+
     }
 }

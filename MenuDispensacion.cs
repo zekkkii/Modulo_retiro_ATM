@@ -9,6 +9,10 @@ namespace ATM_pruebin
     class MenuDispensacion : Imenu
     {
 
+        public MenuDispensacion()
+        {
+        }
+
         public Dispensacion dispensacion = new Dispensacion();
         public void startMenu()
         {
@@ -35,10 +39,6 @@ namespace ATM_pruebin
                     this.startMenu();
                     break;
             }
-        }
-
-        public MenuDispensacion()
-        {
         }
 
     }
